@@ -16,12 +16,20 @@
 //= require theme/jquery.lazyyoutube
 //= require plugins/gist-embed
 
+function googleSearch(curobj){
+  curobj.q.value = "site:http://noconformity.com " + curobj.qtxt.value;
+  curobj.submit();
+}
+
 $(function() {
 
   var url = location.pathname;
   if (window.location.href == "http://noconformity.com.s3-website-us-west-1.amazonaws.com/"){
     window.location.href="http://noconformity.com";
   }
+  $("#search-button").click(function() {
+    googleSearch(this.form)
+  });
   $(".archive-nav").change(function() {
     if(this.value!=0){
       document.location.href=this.value;
